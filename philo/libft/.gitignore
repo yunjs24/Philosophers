@@ -1,7 +1,0 @@
-
-*.log
-*.o
-*.a
-*.so
-libftTester/
-libft-unit-test/

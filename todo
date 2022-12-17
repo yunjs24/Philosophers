@@ -1,0 +1,10 @@
+check_factor_utils.c V
+check_factor.c V?
+main.c V
+error_handle.c V
+philo.c \ V
+init_philo.c \
+free_box.c \ V
+start_game.c \ V
+start_game_state.c \
+start_game_utils.c
