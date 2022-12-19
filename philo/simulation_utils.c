@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:42 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 15:21:36 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:05:22 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_time(t_philo *arr, long long s_t)
 	long long	c_t;
 
 	c_t = get_time();
-	if ((c_t) - (s_t) > arr->info->time_to_die)
+	if ((c_t) - (s_t) >= arr->info->time_to_die)
 	{
 		pthread_mutex_lock(&arr->info->print_mx);
 		if (!(arr->info->block))

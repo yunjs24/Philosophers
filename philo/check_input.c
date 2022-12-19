@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:13 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 14:52:14 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:39:24 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	is_pos_num(int argc, char **argv)
 	{
 		j = 0;
 		len = (int)ft_strlen(argv[i]);
-		while ((9 <= argv[i][j] && argv[i][j] <= 14) || argv[i][j] == ' ')
+		while ((9 <= argv[i][j] && argv[i][j] <= 13) || argv[i][j] == ' ')
 			j++;
 		if (argv[i][j] == '+')
 			j++;
 		while (j < len && ft_isdigit(argv[i][j]) == 1)
 			j++;
-		while ((9 <= argv[i][j] && argv[i][j] <= 14) || argv[i][j] == ' ')
+		while ((9 <= argv[i][j] && argv[i][j] <= 13) || argv[i][j] == ' ')
 			j++;
 		if (len == 0 || j != len)
 			return (2);
