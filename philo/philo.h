@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:35 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 14:52:36 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:12:59 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int			sleeping(t_philo *arr, long long s_t);
 
 //simulation_utils
 long long	get_time(void);
-int			mutex_print(t_philo *arr, char *s_philo);
+int			mutex_print(t_philo *arr, char *s_philo, int n);
 int			check_time(t_philo *arr, long long s_t);
 
 

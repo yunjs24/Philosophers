@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:42 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 14:52:43 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:21:36 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,20 @@ long long	get_time(void)
 	return (time);
 }
 
-int	mutex_print(t_philo *arr, char *s)
+int	mutex_print(t_philo *arr, char *s, int n)
 {
+	int			i;
+
+	i = 0;
 	pthread_mutex_lock(&arr->info->print_mx);
 	if (!((arr->info->block)))
-		printf("%lld [%3d] %s\n", get_time() - arr->info->s_time, arr->idx, s);
+	{
+		while (i < n)
+		{
+			printf("%lld [%3d] %s\n", get_time() - arr->info->s_time, arr->idx, s);
+			i++;
+		}
+	}
 	else
 	{
 		pthread_mutex_unlock(&arr->info->print_mx);

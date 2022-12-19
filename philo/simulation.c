@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:46 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 14:59:32 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:21:51 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	simulation(t_philo *philo)
 	int	i;
 
 	i = 0;
+	philo->info->block = 0;
 	pthread_mutex_lock(&philo->info->print_mx);
-	philo->info->block = 1;
 	while (i < philo->info->number_of_philosophers)
 	{
 		if (pthread_create(&philo[i].id, NULL, \
@@ -30,7 +30,6 @@ int	simulation(t_philo *philo)
 		i++;
 	}
 	philo->info->s_time = get_time();
-	philo->info->block = 0;
 	pthread_mutex_unlock(&philo->info->print_mx);
 	i = 0;
 	while (i < philo->info->number_of_philosophers)

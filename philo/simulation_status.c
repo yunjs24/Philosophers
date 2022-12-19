@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:39 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 14:52:39 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:22:41 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ void	*live_or_die(void *atr)
 
 	arr = (t_philo *)atr;
 	pthread_mutex_lock(&arr->info->print_mx);
-	while (arr->info->block)
-		;
 	pthread_mutex_unlock(&arr->info->print_mx);
-	if (arr->idx % 2 == 0)
-		usleep(1000);
 	pickup(arr, arr->info->s_time);
 	while (1)
 	{
@@ -55,7 +51,7 @@ int	pickup_check(t_philo *arr)
 		pthread_mutex_lock(arr->fork_mx_r);
 		if (*arr->fork_r != arr->idx)
 		{
-			mutex_print(arr, "has taken a fork");
+			mutex_print(arr, "has taken a fork", 2);
 			pthread_mutex_unlock(arr->fork_mx_r);
 			return (1);
 		}
@@ -72,7 +68,7 @@ int	pickup_check(t_philo *arr)
 int	eating(t_philo *arr, long long *s_t)
 {
 	*s_t = get_time();
-	if (mutex_print(arr, "is eating"))
+	if (mutex_print(arr, "is eating", 1))
 		return (0);
 	if (++arr->count == arr->info->number_of_times_each_philosopher_must_eat)
 	{
@@ -100,7 +96,7 @@ int	sleeping(t_philo *arr, long long s_t)
 	long long	c_t;
 
 	c_t = get_time();
-	if (mutex_print(arr, "is sleeping"))
+	if (mutex_print(arr, "is sleeping", 1))
 		return (0);
 	while (get_time() - c_t <= arr->info->time_to_sleep)
 	{
@@ -108,7 +104,7 @@ int	sleeping(t_philo *arr, long long s_t)
 			return (0);
 		usleep(300);
 	}
-	if (mutex_print(arr, "is thinking"))
+	if (mutex_print(arr, "is thinking", 1))
 		return (0);
 	usleep(400);
 	return (1);
