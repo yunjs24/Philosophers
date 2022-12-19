@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 15:34:24 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/17 16:54:34 by junsyun          ###   ########.fr       */
+/*   Created: 2022/12/19 14:52:07 by junsyun           #+#    #+#             */
+/*   Updated: 2022/12/19 14:52:08 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_atoi_pos(const char *str)
 	size_t	num;
 
 	num = 0;
-	while ((0 <= *str && *str <= 13) || *str == ' ')
+	while ((9 <= *str && *str <= 14) || *str == ' ')
 		str++;
 	if ('+' == *str)
 		str++;

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 02:48:39 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/18 08:21:20 by junsyun          ###   ########.fr       */
+/*   Created: 2022/12/19 14:52:25 by junsyun           #+#    #+#             */
+/*   Updated: 2022/12/19 14:52:25 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	init_part(t_info *info, t_part *part, int num)
 {
-	if (pull_bool_fork(num, part) == 1)
+	if (init_fork(num, part) == 1)
 		return (4);
-	if (init_mutex(info) == 1)
+	if (init_print_mx(info) == 1)
 	{
 		free(part->bool_fork);
 		part->bool_fork = 0;
 		return (5);
 	}
-	if (pull_mutex(num, part) == 1)
+	if (init_fork_mx(num, part) == 1)
 	{
 		pthread_mutex_destroy(&info->print_mx);
 		free(part->fork_mx);
@@ -33,7 +33,7 @@ int	init_part(t_info *info, t_part *part, int num)
 	return (0);
 }
 
-int	pull_bool_fork(int num, t_part *part)
+int	init_fork(int num, t_part *part)
 {
 	int	i;
 
@@ -54,7 +54,7 @@ int	pull_bool_fork(int num, t_part *part)
 	return (0);
 }
 
-int	pull_mutex(int num, t_part *part)
+int	init_fork_mx(int num, t_part *part)
 {
 	int	i;
 
@@ -76,7 +76,7 @@ int	pull_mutex(int num, t_part *part)
 	return (0);
 }
 
-int	init_mutex(t_info *info)
+int	init_print_mx(t_info *info)
 {
 	if (pthread_mutex_init(&info->print_mx, NULL) != 0)
 		return (1);

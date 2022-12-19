@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 15:27:12 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/18 08:12:02 by junsyun          ###   ########.fr       */
+/*   Created: 2022/12/19 14:52:31 by junsyun           #+#    #+#             */
+/*   Updated: 2022/12/19 14:52:32 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	philo(int argc, char **argv)
 {
-	int		err;
-	t_info	info;
-	t_philo	*philo;
-	t_part	part;
+	int			err;
+	t_info		info;
+	t_philo		*philo;
+	t_part		part;
 
 	err = check_input(argc, argv, &info);
 	if (err != 0)

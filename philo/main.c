@@ -5,16 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 10:01:49 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/18 08:17:27 by junsyun          ###   ########.fr       */
+/*   Created: 2022/12/19 14:52:28 by junsyun           #+#    #+#             */
+/*   Updated: 2022/12/19 14:52:28 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 int	main(int argc, char **argv)
-{	
+{
 	if (philo(argc, argv) != 0)
+	{
 		return (1);
+	}
 	return (0);
 }
