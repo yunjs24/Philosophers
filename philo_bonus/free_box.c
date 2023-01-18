@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_box.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 14:52:28 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 01:51:32 by junsyun          ###   ########.fr       */
+/*   Created: 2023/01/18 04:13:39 by junsyun           #+#    #+#             */
+/*   Updated: 2023/01/18 17:56:19 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	main(int argc, char **argv)
+void	free_all(t_philo *philo)
 {
-	if (philo(argc, argv) != 0)
+	int	i;
+
+	i = 0;
+	sem_close(philo->info->dead);
+	sem_close(philo->info->fork);
+	sem_close(philo->info->full);
+	sem_close(philo->info->sem_pr);
+	while (i < philo->info->number_of_philosophers)
 	{
-		return (1);
+		sem_close(philo[i].time);
+		i++;
 	}
-	return (0);
 }

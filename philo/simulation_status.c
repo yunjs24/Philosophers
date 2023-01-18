@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:39 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 16:02:20 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/18 18:10:33 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,97 +14,97 @@
 
 void	*live_or_die(void *atr)
 {
-	t_philo		*arr;
+	t_philo		*ph;
 	long long	s_t;
 
-	arr = (t_philo *)atr;
-	pthread_mutex_lock(&arr->info->print_mx);
-	pthread_mutex_unlock(&arr->info->print_mx);
-	pickup(arr, arr->info->s_time);
+	ph = (t_philo *)atr;
+	pthread_mutex_lock(&ph->info->print_mx);
+	pthread_mutex_unlock(&ph->info->print_mx);
+	pickup(ph, ph->info->s_time);
 	while (1)
 	{
-		if (!(eating(arr, &s_t) && sleeping(arr, s_t) && pickup(arr, s_t)))
+		if (!(eating(ph, &s_t) && sleeping(ph, s_t) && pickup(ph, s_t)))
 			break ;
 	}
 	return (NULL);
 }
 
-int	pickup(t_philo *arr, long long s_t)
+int	pickup(t_philo *ph, long long s_t)
 {
 	while (1)
 	{
-		if (pickup_check(arr) == 1)
+		if (pickup_check(ph) == 1)
 			return (1);
-		if (check_time(arr, s_t))
+		if (check_time(ph, s_t))
 			break ;
 		usleep(300);
 	}
 	return (0);
 }
 
-int	pickup_check(t_philo *arr)
+int	pickup_check(t_philo *ph)
 {
-	pthread_mutex_lock(arr->fork_mx_l);
-	if (*arr->fork_l != arr->idx)
+	pthread_mutex_lock(ph->fork_mx_l);
+	if (*ph->fork_l != ph->idx)
 	{
-		pthread_mutex_unlock(arr->fork_mx_l);
-		pthread_mutex_lock(arr->fork_mx_r);
-		if (*arr->fork_r != arr->idx)
+		pthread_mutex_unlock(ph->fork_mx_l);
+		pthread_mutex_lock(ph->fork_mx_r);
+		if (*ph->fork_r != ph->idx)
 		{
-			mutex_print(arr, "has taken a fork", 2);
-			pthread_mutex_unlock(arr->fork_mx_r);
+			mutex_print(ph, "has taken a fork", 2);
+			pthread_mutex_unlock(ph->fork_mx_r);
 			return (1);
 		}
 		else
 		{
-			pthread_mutex_unlock(arr->fork_mx_r);
-			pthread_mutex_lock(arr->fork_mx_l);
+			pthread_mutex_unlock(ph->fork_mx_r);
+			pthread_mutex_lock(ph->fork_mx_l);
 		}
 	}
-	pthread_mutex_unlock(arr->fork_mx_l);
+	pthread_mutex_unlock(ph->fork_mx_l);
 	return (0);
 }
 
-int	eating(t_philo *arr, long long *s_t)
+int	eating(t_philo *ph, long long *s_t)
 {
 	*s_t = get_time();
-	if (mutex_print(arr, "is eating", 1))
+	if (mutex_print(ph, "is eating", 1))
 		return (0);
-	if (++arr->count == arr->info->number_of_times_each_philosopher_must_eat)
+	if (++ph->count == ph->info->number_of_times_each_philosopher_must_eat)
 	{
-		pthread_mutex_lock(arr->fork_mx_l);
-		pthread_mutex_lock(arr->fork_mx_r);
-		*(arr->fork_l) = arr->idx;
-		*(arr->fork_r) = arr->idx;
-		pthread_mutex_unlock(arr->fork_mx_l);
-		pthread_mutex_unlock(arr->fork_mx_r);
+		pthread_mutex_lock(ph->fork_mx_l);
+		pthread_mutex_lock(ph->fork_mx_r);
+		*(ph->fork_l) = ph->idx;
+		*(ph->fork_r) = ph->idx;
+		pthread_mutex_unlock(ph->fork_mx_l);
+		pthread_mutex_unlock(ph->fork_mx_r);
 		return (0);
 	}
-	while (get_time() - *s_t <= arr->info->time_to_eat)
+	while (get_time() - *s_t <= ph->info->time_to_eat)
 		usleep(100);
-	pthread_mutex_lock(arr->fork_mx_l);
-	pthread_mutex_lock(arr->fork_mx_r);
-	*(arr->fork_l) = arr->idx;
-	*(arr->fork_r) = arr->idx;
-	pthread_mutex_unlock(arr->fork_mx_l);
-	pthread_mutex_unlock(arr->fork_mx_r);
+	pthread_mutex_lock(ph->fork_mx_l);
+	pthread_mutex_lock(ph->fork_mx_r);
+	*(ph->fork_l) = ph->idx;
+	*(ph->fork_r) = ph->idx;
+	pthread_mutex_unlock(ph->fork_mx_l);
+	pthread_mutex_unlock(ph->fork_mx_r);
 	return (1);
 }
 
-int	sleeping(t_philo *arr, long long s_t)
+int	sleeping(t_philo *ph, long long s_t)
 {
 	long long	c_t;
 
 	c_t = get_time();
-	if (mutex_print(arr, "is sleeping", 1))
+	if (mutex_print(ph, "is sleeping", 1))
 		return (0);
-	while (get_time() - c_t <= arr->info->time_to_sleep)
+	while (get_time() - c_t < ph->info->time_to_sleep)
 	{
-		if (check_time(arr, s_t))
+		if (check_time(ph, s_t))
 			return (0);
 		usleep(300);
 	}
-	if (mutex_print(arr, "is thinking", 1))
+	if (mutex_print(ph, "is thinking", 1))
 		return (0);
 	usleep(400);
 	return (1);

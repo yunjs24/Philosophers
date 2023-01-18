@@ -1,0 +1,5 @@
+#mandatory
+
+sleep 루틴 뒤에 usleep 빼고 테스트 해보기
+
+#bonus세마포어를 같은 이름으로 생성하면 어떻게 되는가?

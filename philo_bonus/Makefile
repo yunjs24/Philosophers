@@ -5,25 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/23 05:31:07 by junsyun           #+#    #+#              #
-#    Updated: 2023/01/18 01:51:32 by junsyun          ###   ########.fr        #
+#    Created: 2023/01/18 04:13:59 by junsyun           #+#    #+#              #
+#    Updated: 2023/01/18 18:04:37 by junsyun          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	cc
-CFLAG			=	-Wall -Wextra -Werror -g -fsanitize=thread
-CFILES			=	init_philo.c \
-					check_input_utils.c \
+CFLAG			=	-Wall -Wextra -Werror
+CFILES			=	check_input_utils.c \
 					check_input.c \
 					main.c \
 					error_handle.c \
-					philo.c \
-					free_utils.c \
+					philo_bonus.c \
+					init_data.c \
+					free_box.c \
+					moniter.c \
 					simulation.c \
 					simulation_status.c \
 					simulation_utils.c
 
-NAME			= 	philo
+NAME			= 	philo_bonus
 OBJS			=	$(CFILES:.c=.o)
 
 

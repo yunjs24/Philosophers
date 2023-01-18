@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:35 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 15:12:59 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/18 17:50:32 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ typedef struct s_philo
 	t_info			*info;
 }	t_philo;
 
-typedef struct s_part
+typedef struct s_fork
 {
 	pthread_mutex_t	*fork_mx;
-	int				*bool_fork;
-}	t_part;
+	int				*fork;
+}	t_fork;
 
 
 // check_input_utils
@@ -68,18 +68,18 @@ void		error_write(char *str);
 
 // philo
 int			philo(int argc, char **argv);
-int			check_init(t_info *info, t_part *part, t_philo *philo, int num);
+int			check_init(t_info *info, t_fork *part, t_philo *philo, int num);
 //init_philo
-int			init_part(t_info *info, t_part *part, int num);
-int			init_fork(int num, t_part *part);
-int			init_fork_mx(int num, t_part *part);
+int			init_part(t_info *info, t_fork *part, int num);
+int			init_fork(int num, t_fork *part);
+int			init_fork_mx(int num, t_fork *part);
 int			init_print_mx(t_info *info);
-int			init_philo(t_philo *philo, t_info *info, t_part *part, int num);
+int			init_philo(t_philo *philo, t_info *info, t_fork *part, int num);
 
 //free_mutex
 void		free_mutex(pthread_mutex_t *fork_mx, int num);
 void		free_pthread(t_philo *philo, int num);
-void		free_all(t_philo *philo, t_part *part, t_info *info);
+void		free_all(t_philo *philo, t_fork *part, t_info *info);
 
 //simulation
 int			simulation(t_philo *philo);
@@ -87,15 +87,15 @@ void		*live_or_die(void *atr);
 
 //simulation_status
 void		*live_or_die(void *atr);
-int			pickup(t_philo *arr, long long s_t);
-int			pickup_check(t_philo *arr);
-int			eating(t_philo *arr, long long *s_t);
-int			sleeping(t_philo *arr, long long s_t);
+int			pickup(t_philo *ph, long long s_t);
+int			pickup_check(t_philo *ph);
+int			eating(t_philo *ph, long long *s_t);
+int			sleeping(t_philo *ph, long long s_t);
 
 //simulation_utils
 long long	get_time(void);
-int			mutex_print(t_philo *arr, char *s_philo, int n);
-int			check_time(t_philo *arr, long long s_t);
+int			mutex_print(t_philo *ph, char *s_philo, int n);
+int			check_time(t_philo *ph, long long s_t);
 
 
 #endif

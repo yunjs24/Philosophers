@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   moniter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 14:52:28 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 01:51:32 by junsyun          ###   ########.fr       */
+/*   Created: 2023/01/18 04:14:04 by junsyun           #+#    #+#             */
+/*   Updated: 2023/01/18 18:10:03 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	main(int argc, char **argv)
+void	*moniter(void *atr)
 {
-	if (philo(argc, argv) != 0)
+	t_philo	philo;
+
+	philo = *(t_philo *)atr;
+	while (1)
 	{
-		return (1);
+		sem_wait(philo.time);
+		if (get_time() - *philo.r_time >= philo.info->time_to_die)
+		{
+			sem_print(philo, "is dead", 1);
+			break ;
+		}
+		sem_post(philo.time);
+		usleep(100);
 	}
-	return (0);
+	exit(0);
 }

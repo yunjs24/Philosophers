@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 14:52:17 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 16:06:00 by junsyun          ###   ########.fr       */
+/*   Created: 2023/01/18 04:13:44 by junsyun           #+#    #+#             */
+/*   Updated: 2023/01/18 16:08:01 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 int	error_handle(int i)
 {
@@ -21,17 +21,13 @@ int	error_handle(int i)
 	if (i == 3)
 		error_write("Error\nPush number in 0 ~ 2147483647\n");
 	if (i == 4)
-		error_write("Error\nbool_fork malloc fail\n");
+		error_write("Error\nThere are no Philosophers\n");
 	if (i == 5)
-		error_write("Error\ninfo_mutex is wrong\n");
-	if (i == 6)
-		error_write("Error\nfork_mx is wrong\n");
-	if (i == 7)
-		error_write("Error\npthread creat fail\n");
-	if (i == 8)
-		error_write("Error\nphilo is a zero\n");
-	if (i == 9)
 		error_write("Error\nwhat does it mean to eat 0 times?\n");
+	if (i == 6)
+		error_write("Error\nsem_t init fail\n");
+	if (i == 7)
+		error_write("Error\nblock init fail\n");
 	return (1);
 }
 

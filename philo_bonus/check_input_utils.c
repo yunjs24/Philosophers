@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 14:52:07 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 01:51:25 by junsyun          ###   ########.fr       */
+/*   Created: 2023/01/18 04:13:29 by junsyun           #+#    #+#             */
+/*   Updated: 2023/01/18 17:44:14 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -34,7 +34,7 @@ int	ft_atoi_pos(const char *str)
 	size_t	num;
 
 	num = 0;
-	while ((9 <= *str && *str <= 13) || *str == ' ')
+	while ((9 <= *str && *str <= 14) || *str == ' ')
 		str++;
 	if ('+' == *str)
 		str++;
