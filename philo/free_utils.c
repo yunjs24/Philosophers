@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:20 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 01:55:17 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 14:52:21 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	free_pthread(t_philo *philo, int num)
 	}
 }
 
-void	free_all(t_philo *philo, t_fork *part, t_info *info)
+void	free_all(t_philo *philo, t_fork *fork, t_info *info)
 {
-	free_mutex(part->fork_mx, info->number_of_philosophers);
+	free_mutex(fork->fork_mx, info->number_of_philosophers);
 	pthread_mutex_destroy(&info->print_mx);
-	free(part->fork_mx);
-	free(part->bool_fork);
-	part->bool_fork = 0;
+	free(fork->fork_mx);
+	free(fork->forks);
+	fork->forks = 0;
 	free(philo);
 	philo = 0;
 }

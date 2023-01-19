@@ -12,14 +12,14 @@
 
 #include "philo_bonus.h"
 
-int	start_game(t_philo *philo, t_info *info, int num)
+int	simulation(t_philo *philo, t_info *info, int num)
 {
 	pthread_t	dead;
 
 	sem_wait(info->dead);
 	wait_pid(info, num);
 	pthread_create(&dead, NULL, is_dead, philo);
-	if (start_fork(philo, info, num) == 1)
+	if (fork_phlio(philo, info, num) == 1)
 	{
 		free_all(philo);
 		free(philo);
@@ -57,7 +57,7 @@ void	*is_dead(void *atr)
 	exit(0);
 }
 
-int	start_fork(t_philo *philo, t_info *info, int num)
+int	fork_phlio(t_philo *philo, t_info *info, int num)
 {
 	int	i;
 

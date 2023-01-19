@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:42 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 17:49:23 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 19:38:49 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,44 +22,38 @@ long long	get_time(void)
 	return (time);
 }
 
-int	mutex_print(t_philo *ph, char *s, int n)
+int	mutex_print(t_philo *arr, char *s)
 {
-	int			i;
-
-	i = 0;
-	pthread_mutex_lock(&ph->info->print_mx);
-	if (!((ph->info->block)))
+	pthread_mutex_lock(&arr->info->print_mx);
+	if (!((arr->info->block)))
 	{
-		while (i < n)
-		{
-			printf("%lld [%3d] %s\n", get_time() - ph->info->s_time, ph->idx, s);
-			i++;
-		}
+		printf("%lld %3d %s\n", \
+		get_time() - arr->info->s_time, arr->idx, s);
 	}
 	else
 	{
-		pthread_mutex_unlock(&ph->info->print_mx);
+		pthread_mutex_unlock(&arr->info->print_mx);
 		return (1);
 	}
-	pthread_mutex_unlock(&ph->info->print_mx);
+	pthread_mutex_unlock(&arr->info->print_mx);
 	return (0);
 }
 
-int	check_time(t_philo *ph, long long s_t)
+int	check_time(t_philo *arr, long long s_t)
 {
 	long long	c_t;
 
 	c_t = get_time();
-	if ((c_t) - (s_t) >= ph->info->time_to_die)
+	if ((c_t) - (s_t) >= arr->info->time_to_die)
 	{
-		pthread_mutex_lock(&ph->info->print_mx);
-		if (!(ph->info->block))
+		pthread_mutex_lock(&arr->info->print_mx);
+		if (!(arr->info->block))
 		{
-			(ph->info->block) = ph->idx;
-			printf("%lld [%3d] died\n", get_time() - \
-			ph->info->s_time, ph->idx);
+			(arr->info->block) = arr->idx;
+			printf("%lld %3d died\n", get_time() - \
+			arr->info->s_time, arr->idx);
 		}
-		pthread_mutex_unlock(&ph->info->print_mx);
+		pthread_mutex_unlock(&arr->info->print_mx);
 		return (1);
 	}
 	return (0);

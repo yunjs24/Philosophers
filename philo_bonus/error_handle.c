@@ -23,11 +23,13 @@ int	error_handle(int i)
 	if (i == 4)
 		error_write("Error\nThere are no Philosophers\n");
 	if (i == 5)
-		error_write("Error\nwhat does it mean to eat 0 times?\n");
+		error_write("Error\nInput meal count bigger than 0\n");
 	if (i == 6)
 		error_write("Error\nsem_t init fail\n");
 	if (i == 7)
 		error_write("Error\nblock init fail\n");
+	if (i == 8)
+		error_write("Error\nfork malloc failed!\n");
 	return (1);
 }
 

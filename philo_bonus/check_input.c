@@ -18,7 +18,7 @@ int	check_input(int argc, char **argv, t_info *info)
 		return (1);
 	if (is_num(argc, argv) != 0)
 		return (2);
-	if (is_int(argc, argv, info) != 0)
+	if (init_info(argc, argv, info) != 0)
 		return (3);
 	if (info->number_of_philosophers == 0)
 		return (4);
@@ -38,13 +38,13 @@ int	is_num(int argc, char **argv)
 	{
 		j = 0;
 		len = (int)ft_strlen(argv[i]);
-		while ((9 <= argv[i][j] && argv[i][j] <= 14) || argv[i][j] == ' ')
+		while ((9 <= argv[i][j] && argv[i][j] <= 13) || argv[i][j] == ' ')
 			j++;
 		if (argv[i][j] == '+')
 			j++;
 		while (j < len && ft_isdigit(argv[i][j]) == 1)
 			j++;
-		while ((9 <= argv[i][j] && argv[i][j] <= 14) || argv[i][j] == ' ')
+		while ((9 <= argv[i][j] && argv[i][j] <= 13) || argv[i][j] == ' ')
 			j++;
 		if (len == 0 || j != len)
 			return (2);
@@ -53,7 +53,7 @@ int	is_num(int argc, char **argv)
 	return (0);
 }
 
-int	is_int(int argc, char **argv, t_info *info)
+int	init_info(int argc, char **argv, t_info *info)
 {
 	info->number_of_philosophers = ft_atoi_pos(argv[1]);
 	info->time_to_die = ft_atoi_pos(argv[2]);

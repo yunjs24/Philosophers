@@ -27,6 +27,6 @@ int	philo_bonus(int argc, char **argv)
 	err = init_data(philo, &info, info.number_of_philosophers);
 	if (err != 0)
 		return (error_handle(err));
-	err = start_game(philo, &info, info.number_of_philosophers);
+	err = simulation(philo, &info, info.number_of_philosophers);
 	return (0);
 }

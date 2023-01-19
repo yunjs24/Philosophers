@@ -34,7 +34,7 @@ int	ft_atoi_pos(const char *str)
 	size_t	num;
 
 	num = 0;
-	while ((9 <= *str && *str <= 14) || *str == ' ')
+	while ((9 <= *str && *str <= 13) || *str == ' ')
 		str++;
 	if ('+' == *str)
 		str++;

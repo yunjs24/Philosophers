@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:13 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 01:51:26 by junsyun          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:39:24 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_input(int argc, char **argv, t_info *info)
 {
 	if (argc < 5 || argc > 6)
 		return (1);
-	if (is_pos_num(argc, argv) != 0)
+	if (is_num(argc, argv) != 0)
 		return (2);
 	if (init_info(argc, argv, info) != 0)
 		return (3);
@@ -27,7 +27,7 @@ int	check_input(int argc, char **argv, t_info *info)
 	return (0);
 }
 
-int	is_pos_num(int argc, char **argv)
+int	is_num(int argc, char **argv)
 {
 	int	i;
 	int	j;

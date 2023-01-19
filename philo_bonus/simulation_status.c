@@ -21,7 +21,7 @@ int	live_or_die(t_philo philo)
 		pick_up(philo);
 		if (eating(philo) == 1)
 			break ;
-		++philo.count;
+		philo.count++;
 		sleeping(philo);
 	}
 	return (0);
@@ -31,7 +31,8 @@ void	pick_up(t_philo philo)
 {
 	sem_wait(philo.info->fork);
 	sem_wait(philo.info->fork);
-	sem_print(philo, "has fork", 0);
+	sem_print(philo, "has taken a fork", 0);
+	sem_print(philo, "has taken a fork", 0);
 }
 
 int	eating(t_philo philo)

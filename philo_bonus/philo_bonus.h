@@ -43,18 +43,18 @@ typedef struct s_philo
 	int				idx;
 	int				count;
 	long long		*r_time;
-	t_info		*info;
+	t_info			*info;
 	sem_t			*time;
 }	t_philo;
 
 int			philo_bonus(int argc, char **argv);
 
-int			error_handle(int i);
+int			error_handle(int death_flag);
 void		error_write(char *str);
 
 int			check_input(int argc, char **argv, t_info *info);
 int			is_num(int argc, char **argv);
-int			is_int(int argc, char **argv, t_info *info);
+int			init_info(int argc, char **argv, t_info *info);
 
 size_t		ft_strlen(const char *s);
 int			ft_isdigit(int c);
@@ -64,13 +64,13 @@ int			init_data(t_philo *philo, t_info *info, int num);
 int			init_philo(t_philo *philo, int num, t_info *info);
 int			init_sem(t_info *info, int num);
 
-int			start_game(t_philo *philo, t_info *info, int num);
+int			simulation(t_philo *philo, t_info *info, int num);
 void		wait_pid(t_info *info, int num);
 void		*is_dead(void *atr);
-int			start_fork(t_philo *philo, t_info *info, int num);
+int			fork_phlio(t_philo *philo, t_info *info, int num);
 
 long long	get_time(void);
-void		sem_print(t_philo philo, char *s, int i);
+void		sem_print(t_philo philo, char *s, int death_flag);
 
 int			live_or_die(t_philo philo);
 void		pick_up(t_philo philo);

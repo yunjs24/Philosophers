@@ -6,12 +6,12 @@
 #    By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 05:31:07 by junsyun           #+#    #+#              #
-#    Updated: 2023/01/18 01:51:32 by junsyun          ###   ########.fr        #
+#    Updated: 2022/12/19 18:24:21 by junsyun          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	cc
-CFLAG			=	-Wall -Wextra -Werror -g -fsanitize=thread
+CFLAG			=	-Wall -Wextra -Werror
 CFILES			=	init_philo.c \
 					check_input_utils.c \
 					check_input.c \
