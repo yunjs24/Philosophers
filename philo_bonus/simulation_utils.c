@@ -25,7 +25,7 @@ long long	get_time(void)
 void	sem_print(t_philo philo, char *s, int death_flag)
 {
 	sem_wait(philo.info->sem_pr);
-	printf("%lld [%3d] %s\n", get_time() - philo.info->s_time, philo.idx, s);
+	printf("%lld %3d %s\n", get_time() - philo.info->s_time, philo.idx, s);
 	if (death_flag == 1)
 	{
 		sem_post(philo.info->dead);

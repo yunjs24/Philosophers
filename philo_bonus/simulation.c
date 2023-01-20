@@ -67,6 +67,8 @@ int	fork_phlio(t_philo *philo, t_info *info, int num)
 	while (i < num)
 	{
 		philo[i].pid = fork();
+		// pthread_create(&philo->id, NULL, monitor, philo);
+		// pthread_detach(philo->id);
 		if (philo[i].pid == -1)
 			return (1);
 		else if (philo[i].pid == 0)

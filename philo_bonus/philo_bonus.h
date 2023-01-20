@@ -79,6 +79,6 @@ void		sleeping(t_philo philo);
 
 void		free_all(t_philo *philo);
 
-void		*moniter(void *atr);
+void		*monitor(void *atr);
 
 #endif

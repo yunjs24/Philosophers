@@ -15,7 +15,9 @@
 int	live_or_die(t_philo philo)
 {
 	philo.r_time = &philo.info->put_t;
-	pthread_create(&philo.id, NULL, moniter, &philo);
+
+	pthread_create(&philo.id, NULL, monitor, &philo);
+	// pthread_detach(philo.id);
 	while (1)
 	{
 		pick_up(philo);
@@ -24,14 +26,15 @@ int	live_or_die(t_philo philo)
 		philo.count++;
 		sleeping(philo);
 	}
+	pthread_join(philo.id, NULL);
 	return (0);
 }
 
 void	pick_up(t_philo philo)
 {
 	sem_wait(philo.info->fork);
-	sem_wait(philo.info->fork);
 	sem_print(philo, "has taken a fork", 0);
+	sem_wait(philo.info->fork);
 	sem_print(philo, "has taken a fork", 0);
 }
 
@@ -60,7 +63,7 @@ void	sleeping(t_philo philo)
 	long long	x;
 
 	x = get_time();
-	sem_print(philo, "is sleep", 0);
+	sem_print(philo, "is sleeping", 0);
 	while (get_time() - x < philo.info->time_to_sleep)
 		usleep(300);
 	sem_print(philo, "is thinking", 0);

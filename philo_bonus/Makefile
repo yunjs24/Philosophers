@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC				=	cc
-CFLAG			=	-Wall -Wextra -Werror
+CFLAG			=	-Wall -Wextra -Werror -fsanitize=thread
 CFILES			=	check_input_utils.c \
 					check_input.c \
 					main.c \
@@ -19,7 +19,7 @@ CFILES			=	check_input_utils.c \
 					philo_bonus.c \
 					init_data.c \
 					free_box.c \
-					moniter.c \
+					monitor.c \
 					simulation.c \
 					simulation_status.c \
 					simulation_utils.c
