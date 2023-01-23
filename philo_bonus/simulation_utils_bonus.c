@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation_utils.c                                 :+:      :+:    :+:   */
+/*   simulation_utils_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 04:14:22 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 18:12:17 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/24 08:04:36 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long long	get_time(void)
 void	sem_print(t_philo philo, char *s, int death_flag)
 {
 	sem_wait(philo.info->sem_pr);
-	printf("%lld %3d %s\n", get_time() - philo.info->s_time, philo.idx, s);
+	printf("%lld [%3d] %s\n", get_time() - philo.info->s_time, philo.idx, s);
 	if (death_flag == 1)
 	{
 		sem_post(philo.info->dead);

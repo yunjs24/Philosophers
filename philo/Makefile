@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC				=	cc
-CFLAG			=	-Wall -Wextra -Werror -fsanitize=thread
+CFLAG			=	-Wall -Wextra -Werror
 CFILES			=	init_philo.c \
 					check_input_utils.c \
 					check_input.c \

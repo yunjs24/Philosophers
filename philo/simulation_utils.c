@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:42 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 19:38:49 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/24 08:08:06 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +22,38 @@ long long	get_time(void)
 	return (time);
 }
 
-int	mutex_print(t_philo *arr, char *s)
+int	mutex_print(t_philo *philo, char *s)
 {
-	pthread_mutex_lock(&arr->info->print_mx);
-	if (!((arr->info->block)))
+	pthread_mutex_lock(&philo->info->print_mx);
+	if (!((philo->info->block)))
 	{
 		printf("%lld %3d %s\n", \
-		get_time() - arr->info->s_time, arr->idx, s);
+		get_time() - philo->info->s_time, philo->idx, s);
 	}
 	else
 	{
-		pthread_mutex_unlock(&arr->info->print_mx);
+		pthread_mutex_unlock(&philo->info->print_mx);
 		return (1);
 	}
-	pthread_mutex_unlock(&arr->info->print_mx);
+	pthread_mutex_unlock(&philo->info->print_mx);
 	return (0);
 }
 
-int	check_time(t_philo *arr, long long s_t)
+int	check_time(t_philo *philo, long long s_t)
 {
 	long long	c_t;
 
 	c_t = get_time();
-	if ((c_t) - (s_t) >= arr->info->time_to_die)
+	if ((c_t) - (s_t) >= philo->info->time_to_die)
 	{
-		pthread_mutex_lock(&arr->info->print_mx);
-		if (!(arr->info->block))
+		pthread_mutex_lock(&philo->info->print_mx);
+		if (!(philo->info->block))
 		{
-			(arr->info->block) = arr->idx;
+			(philo->info->block) = philo->idx;
 			printf("%lld %3d died\n", get_time() - \
-			arr->info->s_time, arr->idx);
+			philo->info->s_time, philo->idx);
 		}
-		pthread_mutex_unlock(&arr->info->print_mx);
+		pthread_mutex_unlock(&philo->info->print_mx);
 		return (1);
 	}
 	return (0);

@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   monitor.c                                          :+:      :+:    :+:   */
+/*   moniter_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 04:14:04 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 18:10:03 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/24 08:04:45 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	*monitor(void *atr)
+void	*moniter(void *atr)
 {
-	int		i;
 	t_philo	philo;
 
-	i = 0;
 	philo = *(t_philo *)atr;
 	while (1)
 	{
@@ -30,10 +28,5 @@ void	*monitor(void *atr)
 		sem_post(philo.time);
 		usleep(100);
 	}
-	// while (i < philo.info->number_of_philosophers)
-	// {
-	// 	kill(&philo[i].pid, SIGINT);
-	// 	i++;
-	// }
 	exit(0);
 }

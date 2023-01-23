@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:52:35 by junsyun           #+#    #+#             */
-/*   Updated: 2022/12/19 18:25:01 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/24 08:07:55 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ int			simulation(t_philo *philo);
 
 //simulation_status
 void		*live_or_die(void *atr);
-int			pickup(t_philo *arr, long long s_t);
-int			pickup_check(t_philo *arr);
-int			eating(t_philo *arr, long long *s_t);
-int			sleeping(t_philo *arr, long long s_t);
+int			pickup(t_philo *philo, long long s_t);
+int			pickup_check(t_philo *philo);
+int			eating(t_philo *philo, long long *s_t);
+int			sleeping(t_philo *philo, long long s_t);
 
 //simulation_utils
 long long	get_time(void);
-int			mutex_print(t_philo *arr, char *s_philo);
-int			check_time(t_philo *arr, long long s_t);
+int			mutex_print(t_philo *philo, char *s_philo);
+int			check_time(t_philo *philo, long long s_t);
 
 #endif

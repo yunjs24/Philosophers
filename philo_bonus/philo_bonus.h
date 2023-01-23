@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 04:14:11 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 17:56:19 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/24 08:04:43 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void		sleeping(t_philo philo);
 
 void		free_all(t_philo *philo);
 
-void		*monitor(void *atr);
+void		*moniter(void *atr);
 
 #endif

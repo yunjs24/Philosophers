@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation_status.c                                :+:      :+:    :+:   */
+/*   simulation_status_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 04:14:17 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 18:11:10 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/24 08:11:25 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 int	live_or_die(t_philo philo)
 {
-	sem_wait(philo.time);
 	philo.r_time = &philo.info->put_t;
-	sem_post(philo.time);
-	pthread_create(&philo.id, NULL, monitor, &philo);
-	pthread_detach(philo.id);
+	pthread_create(&philo.id, NULL, moniter, &philo);
 	while (1)
 	{
 		pick_up(philo);
@@ -27,15 +24,14 @@ int	live_or_die(t_philo philo)
 		philo.count++;
 		sleeping(philo);
 	}
-	// pthread_join(philo.id, NULL);
 	return (0);
 }
 
 void	pick_up(t_philo philo)
 {
 	sem_wait(philo.info->fork);
-	sem_print(philo, "has taken a fork", 0);
 	sem_wait(philo.info->fork);
+	sem_print(philo, "has taken a fork", 0);
 	sem_print(philo, "has taken a fork", 0);
 }
 

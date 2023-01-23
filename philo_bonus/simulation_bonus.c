@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation.c                                       :+:      :+:    :+:   */
+/*   simulation_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 04:14:26 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/18 18:02:03 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/24 08:04:39 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	simulation(t_philo *philo, t_info *info, int num)
 	wait_pid(info, num);
 	if (fork_phlio(philo, info, num) == 1)
 	{
-		free(philo);
 		free_all(philo);
+		free(philo);
 		exit(0);
 	}
 	pthread_create(&dead, NULL, is_dead, philo);
@@ -67,8 +67,6 @@ int	fork_phlio(t_philo *philo, t_info *info, int num)
 	while (i < num)
 	{
 		philo[i].pid = fork();
-		// pthread_create(&philo->id, NULL, monitor, philo);
-		// pthread_detach(philo->id);
 		if (philo[i].pid == -1)
 			return (1);
 		else if (philo[i].pid == 0)
