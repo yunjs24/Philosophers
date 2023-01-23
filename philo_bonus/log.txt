@@ -1,0 +1,83 @@
+47   1 has taken a fork
+60   4 has taken a fork
+70   2 has taken a fork
+79   3 has taken a fork
+89   7 has taken a fork
+99   6 has taken a fork
+109   5 has taken a fork
+118   9 has taken a fork
+129   8 has taken a fork
+138   1 has taken a fork
+139   1 is eating
+338  10 has taken a fork
+347   4 has taken a fork
+348   1 is sleeping
+348   4 is eating
+538   1 is thinking
+548   2 has taken a fork
+548   3 has taken a fork
+548   4 is sleeping
+549   2 is eating
+549   3 is eating
+748   4 is thinking
+748   7 has taken a fork
+748   6 has taken a fork
+748   2 is sleeping
+749   7 is eating
+749   6 is eating
+749   5 has taken a fork
+749   9 has taken a fork
+749   3 is sleeping
+750   5 is eating
+750   9 is eating
+948   2 is thinking
+948   8 has taken a fork
+948  10 has taken a fork
+948   7 is sleeping
+948   8 is eating
+949   1 has taken a fork
+949  10 is eating
+949   4 has taken a fork
+949   3 is thinking
+949   2 has taken a fork
+949   1 has taken a fork
+949   6 is sleeping
+949   1 is eating
+949   4 has taken a fork
+949   2 has taken a fork
+949   5 is sleeping
+949   4 is eating
+950   3 has taken a fork
+950   3 has taken a fork
+950   9 is sleeping
+951   2 is eating
+953   3 is eating
+1148   7 is thinking
+1148   7 has taken a fork
+1148   7 has taken a fork
+1148   8 is sleeping
+1148  10 is sleeping
+1148   7 is eating
+1149   5 is thinking
+1149   6 is thinking
+1149   5 has taken a fork
+1149   5 has taken a fork
+1149   6 has taken a fork
+1149   6 has taken a fork
+1150   9 is thinking
+1150   9 has taken a fork
+1150   9 has taken a fork
+1150   5 is eating
+1150   6 is eating
+1150   9 is eating
+1348   8 is thinking
+1348  10 is thinking
+1348   8 has taken a fork
+1348   8 has taken a fork
+1348  10 has taken a fork
+1348   8 is eating
+1348  10 has taken a fork
+1348  10 is eating
+5049   4 died
+
+ 5 6 8 9 10 

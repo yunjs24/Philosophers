@@ -14,10 +14,11 @@
 
 int	live_or_die(t_philo philo)
 {
+	sem_wait(philo.time);
 	philo.r_time = &philo.info->put_t;
-
+	sem_post(philo.time);
 	pthread_create(&philo.id, NULL, monitor, &philo);
-	// pthread_detach(philo.id);
+	pthread_detach(philo.id);
 	while (1)
 	{
 		pick_up(philo);
@@ -26,7 +27,7 @@ int	live_or_die(t_philo philo)
 		philo.count++;
 		sleeping(philo);
 	}
-	pthread_join(philo.id, NULL);
+	// pthread_join(philo.id, NULL);
 	return (0);
 }
 

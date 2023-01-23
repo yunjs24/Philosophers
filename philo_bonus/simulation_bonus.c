@@ -18,13 +18,13 @@ int	simulation(t_philo *philo, t_info *info, int num)
 
 	sem_wait(info->dead);
 	wait_pid(info, num);
-	pthread_create(&dead, NULL, is_dead, philo);
 	if (fork_phlio(philo, info, num) == 1)
 	{
-		free_all(philo);
 		free(philo);
+		free_all(philo);
 		exit(0);
 	}
+	pthread_create(&dead, NULL, is_dead, philo);
 	wait_pid(info, num);
 	exit(0);
 }

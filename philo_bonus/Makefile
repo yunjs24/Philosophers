@@ -12,17 +12,17 @@
 
 CC				=	cc
 CFLAG			=	-Wall -Wextra -Werror -fsanitize=thread
-CFILES			=	check_input_utils.c \
-					check_input.c \
-					main.c \
-					error_handle.c \
+CFILES			=	check_input_utils_bonus.c \
+					check_input_bonus.c \
+					main_bonus.c \
+					error_handle_bonus.c \
 					philo_bonus.c \
-					init_data.c \
-					free_box.c \
-					monitor.c \
-					simulation.c \
-					simulation_status.c \
-					simulation_utils.c
+					init_data_bonus.c \
+					free_box_bonus.c \
+					monitor_bonus.c \
+					simulation_bonus.c \
+					simulation_status_bonus.c \
+					simulation_utils_bonus.c
 
 NAME			= 	philo_bonus
 OBJS			=	$(CFILES:.c=.o)
