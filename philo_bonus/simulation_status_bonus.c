@@ -6,7 +6,7 @@
 /*   By: junsyun <junsyun@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 04:14:17 by junsyun           #+#    #+#             */
-/*   Updated: 2023/01/24 08:11:25 by junsyun          ###   ########.fr       */
+/*   Updated: 2023/01/24 09:27:14 by junsyun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	live_or_die(t_philo philo)
 void	pick_up(t_philo philo)
 {
 	sem_wait(philo.info->fork);
-	sem_wait(philo.info->fork);
 	sem_print(philo, "has taken a fork", 0);
+	sem_wait(philo.info->fork);
 	sem_print(philo, "has taken a fork", 0);
 }
 
@@ -48,8 +48,17 @@ int	eating(t_philo philo)
 		sem_post(philo.info->fork);
 		return (1);
 	}
-	while (get_time() - *philo.r_time < philo.info->time_to_eat)
+	while (1)
+	{
+		sem_wait(philo.time);
+		if (get_time() - *philo.r_time > philo.info->time_to_eat)
+		{
+			sem_post(philo.time);
+			break ;
+		}
+		sem_post(philo.time);
 		usleep(300);
+	}
 	sem_post(philo.info->fork);
 	sem_post(philo.info->fork);
 	return (0);
